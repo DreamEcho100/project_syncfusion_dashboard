@@ -1,0 +1,39 @@
+{
+	"compilerOptions": {
+		"target": "es5",
+		"lib": ["dom", "dom.iterable", "esnext"],
+		"allowJs": true,
+		"skipLibCheck": true,
+		"strict": true,
+		"forceConsistentCasingInFileNames": true,
+		"noEmit": true,
+		"esModuleInterop": true,
+		"module": "esnext",
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"jsx": "preserve",
+		"incremental": true
+	},
+	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+	"exclude": ["node_modules"],
+	"rules": {
+		// 	"no-unused-vars": [1, { "args": "after-used", "argsIgnorePattern": "^_" }]
+		// "@typescript-eslint/no-unused-vars": ["error"],
+		// "noUnusedLocals": true,
+		// "noUnusedParameters": true
+		"no-unused-vars": "off",
+		"@typescript-eslint/no-unused-vars": [
+			1,
+			{ "args": "after-used", "argsIgnorePattern": "^_" }
+		],
+		"require-await": "off",
+		"@typescript-eslint/require-await": 1,
+		"no-extra-semi": "off",
+		"@typescript-eslint/no-extra-semi": [1]
+		// "no-extra-parens": "off",
+		// "@typescript-eslint/no-extra-parens": ["error"]
+		// "brace-style": "off",
+		// "@typescript-eslint/brace-style": ["error"]
+	}
+}

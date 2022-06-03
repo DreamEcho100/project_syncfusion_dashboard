@@ -1,0 +1,169 @@
+html,
+body {
+	padding: 0;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+		Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+* {
+	box-sizing: border-box;
+}
+:root {
+	/* --root-font-size: 62.5%; */
+	font-size: 62.5%; /* var(--root-font-size); */
+	scroll-behavior: smooth;
+
+	--size-1: 0.2rem;
+	--size-2: 0.4rem;
+	--size-3: 0.6rem;
+	--size-4: 0.8rem;
+	--size-5: 1rem;
+
+	--size-6: 1.2rem;
+	--size-6: 1.4rem;
+	--size-8: 1.6rem;
+	--size-9: 1.8rem;
+	--size-10: 2rem;
+
+	--size-11: 2.2rem;
+	--size-12: 2.4rem;
+	--size-13: 2.6rem;
+	--size-14: 2.8rem;
+	--size-15: 3rem;
+
+	--size-16: 3.2rem;
+	--size-17: 3.4rem;
+	--size-18: 3.6rem;
+	--size-19: 3.8rem;
+	--size-20: 4rem;
+
+	--size-21: 4.2rem;
+	--size-22: 4.4rem;
+	--size-23: 4.6rem;
+	--size-24: 4.8rem;
+	--size-25: 5rem;
+
+	--size-26: 5.2rem;
+	--size-27: 5.4rem;
+	--size-28: 5.6rem;
+	--size-29: 5.8rem;
+	--size-30: 6rem;
+
+	--size-31: 6.2rem;
+	--size-32: 6.4rem;
+
+	--header1: var(--size-25);
+	--header2: var(--size-22);
+	--header3: var(--size-20);
+	--header4: var(--size-18);
+	--header5: var(--size-16);
+	--header6: var(--size-14);
+}
+
+:root {
+	--current-font-size: var(--size-12);
+	--body-max-width: 150rem;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background-color: transparent;
+}
+
+html,
+body {
+	width: 100%;
+	height: 100%;
+	/* min-height: 100vh; */
+	/* min-height: fill-available; stretch */
+	/* min-height: -webkit-fill-available; */
+	font-size: var(--current-font-size);
+	max-width: var(--body-max-width);
+	margin: auto;
+}
+
+body {
+	font-family: sans-serif, system-ui, monospace;
+	line-height: 1.15;
+	-webkit-text-size-adjust: 100%;
+	text-size-adjust: 100%;
+	overflow-y: auto;
+	overflow-x: hidden;
+	color-scheme: dark light;
+}
+
+h1 {
+	font-size: var(--header1);
+}
+h2 {
+	font-size: var(--header2);
+}
+h3 {
+	font-size: var(--header3);
+}
+h4 {
+	font-size: var(--header4);
+}
+h5 {
+	font-size: var(--header5);
+}
+h6 {
+	font-size: var(--header6);
+}
+
+a {
+	text-decoration: none;
+}
+
+a,
+button,
+label {
+	cursor: pointer;
+}
+
+nav ol,
+nav ul {
+	list-style: none;
+}
+
+ol,
+ul {
+	padding: revert;
+}
+
+button:disabled {
+	cursor: not-allowed;
+	-webkit-user-select: none;
+	user-select: none;
+	filter: grayscale(0.75) blur(0.05rem) brightness(0.5) hue-rotate(45deg);
+}
+
+strong {
+	font-weight: bolder;
+}
+
+em {
+	font-style: italic;
+}
+
+small {
+	font-size: 80%;
+}
+
+/**/
+@media all and (min-width: 900px) {
+	:root {
+		font-size: 100%;
+	}
+}
