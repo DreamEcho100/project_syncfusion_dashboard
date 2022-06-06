@@ -1,7 +1,9 @@
 import { EAppContextConsts } from './constants';
 
+export type TInitialStateScreenSize = number;
+
 export interface IInitialState {
-	screenSize?: number;
+	screenSize?: TInitialStateScreenSize;
 	currentColorMode: string;
 	currentThemeMode: 'light' | 'dark';
 	themeSettings: boolean;
@@ -15,49 +17,44 @@ export interface IInitialState {
 	};
 }
 
-interface ISetReducerCtion<Type, Payload = undefined> {
+interface ISetReducerAction<Type, Payload = undefined> {
 	type: Type;
 	payload: Payload;
 }
-type TSetScreenSize = ISetReducerCtion<
+type TSetScreenSize = ISetReducerAction<
 	EAppContextConsts.SET_SCREEN_SIZE,
 	{
 		screenSize: number;
 	}
 >;
 
-type TSetCurrentColorMode = ISetReducerCtion<
+type TSetCurrentColorMode = ISetReducerAction<
 	EAppContextConsts.SET_CURRENT_COLOR_MODE,
 	{
 		currentColorMode: string;
 	}
 >;
-type TSetCurrentThemeMode = ISetReducerCtion<
+type TSetCurrentThemeMode = ISetReducerAction<
 	EAppContextConsts.SET_CURRENT_THEME_MODE,
 	{
 		currentThemeMode: IInitialState['currentThemeMode'];
 	}
 >;
-type TSetThemeSettings = ISetReducerCtion<
+type TSetThemeSettings = ISetReducerAction<
 	EAppContextConsts.SET_THEME_SETTINGS,
 	{
 		themeSettings: boolean;
 	}
 >;
-type TSetIsMenuActive = ISetReducerCtion<
+type TSetIsMenuActive = ISetReducerAction<
 	EAppContextConsts.SET_IS_MENU_ACTIVE,
 	{
 		isMenuActive: boolean;
 	}
 >;
-type TSetIsClicked = ISetReducerCtion<
+export type TSetIsClicked = ISetReducerAction<
 	EAppContextConsts.SET_IS_CLICKED,
-	(
-		| { chat: boolean }
-		| { cart: boolean }
-		| { userProfile: boolean }
-		| { notification: boolean }
-	) & { clicked: boolean }
+	{ isClickedItem: keyof IInitialState['isClicked'] }
 >;
 
 export type IReducerActions =

@@ -67,7 +67,7 @@ a {
 }
 
 :root {
-	--current-font-size: var(--size-12);
+	--current-font-size: var(--size-8);
 	--body-max-width: 150rem;
 }
 
@@ -162,8 +162,8 @@ small {
 }
 
 /**/
-@media all and (min-width: 900px) {
+/* @media all and (min-width: 900px) {
 	:root {
 		font-size: 100%;
 	}
-}
+} */

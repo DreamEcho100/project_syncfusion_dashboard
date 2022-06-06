@@ -1,6 +1,14 @@
 import { EAppContextConsts } from './constants';
 import { IInitialState, IReducerActions } from './ts';
 
+const initialStateIsClicked = {
+	chat: false,
+	cart: false,
+	userProfile: false,
+	notification: false,
+	clicked: false,
+};
+
 export const reducer = (state: IInitialState, action: IReducerActions) => {
 	switch (action.type) {
 		case EAppContextConsts.SET_SCREEN_SIZE:
@@ -17,8 +25,8 @@ export const reducer = (state: IInitialState, action: IReducerActions) => {
 			return {
 				...state,
 				isClicked: {
-					...state.isClicked,
-					...action.payload,
+					...initialStateIsClicked,
+					[action.payload.isClickedItem]: true,
 				},
 			};
 		}

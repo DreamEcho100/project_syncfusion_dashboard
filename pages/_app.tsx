@@ -3,10 +3,13 @@ import { FiSettings } from 'react-icons/fi';
 // import '../styles/globals.css';
 import '../styles/index.css';
 import { ReactNode, useEffect } from 'react';
-import { TooltipComponent } from '../components';
-import { SharedStateProvider, useSharedState } from '../contexts/app';
-import { setColorMode, setThemeMode } from '../contexts/actions';
-import { EAppContextConsts } from '../contexts/constants';
+import { Navbar, Sidebar, TooltipComponent } from '@components/index';
+import { SharedStateProvider, useSharedState } from '@contexts/app';
+import {
+	setColorMode,
+	setThemeMode,
+	setThemeSettings,
+} from '../contexts/actions';
 
 const Layout = ({ children }: { children: ReactNode }) => {
 	const [{ isMenuActive, currentThemeMode }, dispatch] = useSharedState();
@@ -28,25 +31,21 @@ const Layout = ({ children }: { children: ReactNode }) => {
 
 	return (
 		<div
-			className={`${
+			className={`w-full ${
 				currentThemeMode === 'dark' ? 'dark' : ''
 			} flex relative dark:bg-main-dark-bg`}
 		>
-			<div className='fixed ring-4 bottom-4' style={{ zIndex: '1000' }}>
+			<div
+				className='fixed bottom-4 right-4 rtl:right-auto rtl:bottom-4 rtl:left-auto ring-4'
+				style={{ zIndex: '1000' }}
+			>
 				<TooltipComponent
 					content='settings'
 					position='topRight'
 					windowCollision
 				>
 					<button
-						onClick={() =>
-							dispatch({
-								type: EAppContextConsts.SET_THEME_SETTINGS,
-								payload: {
-									themeSettings: true,
-								},
-							})
-						}
+						onClick={() => setThemeSettings(dispatch, true)}
 						className='p-3 text-3xl hover:drop-shadow-xl hover:bg-light-gray text-white bg-blue-900'
 						style={{
 							borderRadius: '50%',
@@ -58,7 +57,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
 			</div>
 			{isMenuActive ? (
 				<div className='w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white'>
-					{/* <Sidebar /> */}
+					<Sidebar />
 				</div>
 			) : (
 				<div className='w-0 dark:bg-secondary-dark-bg'>{/* <Sidebar /> */}</div>
@@ -71,7 +70,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
 				}
 			>
 				<div className='fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full'>
-					{/* <Navbar /> */}
+					<Navbar />
 				</div>
 				<div>
 					{/* {themeSettings && (<ThemeSettings />)} */}

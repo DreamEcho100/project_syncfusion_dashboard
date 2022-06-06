@@ -1,10 +1,6 @@
 import { FC } from 'react';
 
-interface IProps {
-	children: React.ReactNode;
-}
-
-const Notification: FC<IProps> = (props) => {
+const Notification: FC = () => {
 	return <div>Notification</div>;
 };
 
