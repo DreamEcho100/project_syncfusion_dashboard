@@ -2,34 +2,34 @@ import type { AppProps } from 'next/app';
 import { FiSettings } from 'react-icons/fi';
 // import '../styles/globals.css';
 import '../styles/index.css';
-import { useEffect, useState } from 'react';
-import TooltipComponent from '../components/independent/TooltipComponent';
+import { ReactNode, useEffect } from 'react';
+import { TooltipComponent } from '../components';
+import { SharedStateProvider, useSharedState } from '../contexts/app';
+import { setColorMode, setThemeMode } from '../contexts/actions';
+import { EAppContextConsts } from '../contexts/constants';
 
-function MyApp({ Component, pageProps }: AppProps) {
-	const [isMenuActive, setIsMenuActive] = useState(false);
-	const [currentMode, setCurrentMode] = useState<'dark' | 'light'>('light');
-	const [currentColor, setCurrentColor] = useState('');
-	const [themeSettings, setThemeSettings] = useState(false);
+const Layout = ({ children }: { children: ReactNode }) => {
+	const [{ isMenuActive, currentThemeMode }, dispatch] = useSharedState();
 
 	useEffect(() => {
 		document.getElementById('js-licensing')?.remove();
-		const currentThemeColor = localStorage.getItem('colorMode');
+		const currentColorMode = localStorage.getItem('colorMode');
 		const currentThemeMode = localStorage.getItem('themeMode');
 		if (
-			currentThemeColor &&
+			currentColorMode &&
 			currentThemeMode &&
 			// ['light', 'dark'].indexOf(currentThemeMode) !== -1
 			(currentThemeMode == 'light' || currentThemeMode == 'dark')
 		) {
-			setCurrentColor(currentThemeColor);
-			setCurrentMode(currentThemeMode);
+			setThemeMode(dispatch, currentThemeMode);
+			setColorMode(dispatch, currentColorMode);
 		}
-	}, []);
+	}, [dispatch]);
 
 	return (
 		<div
 			className={`${
-				currentMode === 'dark' ? 'dark' : ''
+				currentThemeMode === 'dark' ? 'dark' : ''
 			} flex relative dark:bg-main-dark-bg`}
 		>
 			<div className='fixed ring-4 bottom-4' style={{ zIndex: '1000' }}>
@@ -39,10 +39,16 @@ function MyApp({ Component, pageProps }: AppProps) {
 					windowCollision
 				>
 					<button
-						onClick={() => setThemeSettings(true)}
-						className='p-3 text-3xl hover:drop-shadow-xl hover:bg-light-gray text-white'
+						onClick={() =>
+							dispatch({
+								type: EAppContextConsts.SET_THEME_SETTINGS,
+								payload: {
+									themeSettings: true,
+								},
+							})
+						}
+						className='p-3 text-3xl hover:drop-shadow-xl hover:bg-light-gray text-white bg-blue-900'
 						style={{
-							background: 'blue',
 							borderRadius: '50%',
 						}}
 					>
@@ -69,11 +75,21 @@ function MyApp({ Component, pageProps }: AppProps) {
 				</div>
 				<div>
 					{/* {themeSettings && (<ThemeSettings />)} */}
-					<Component {...pageProps} />
+					{children}
 				</div>
 				{/* <Footer /> */}
 			</div>
 		</div>
+	);
+};
+
+function MyApp({ Component, pageProps }: AppProps) {
+	return (
+		<SharedStateProvider>
+			<Layout>
+				<Component {...pageProps} />
+			</Layout>
+		</SharedStateProvider>
 	);
 }
 
