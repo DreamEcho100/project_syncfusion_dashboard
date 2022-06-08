@@ -317,11 +317,11 @@ const TooltipComponent: FC<IProps> = ({
 					// }
 				}}
 				onTransitionEnd={() => {
-					if (typeof isVisible !== 'boolean' || !tooltipRef.current) return;
+					if (typeof isVisible === 'boolean' || !tooltipRef.current) return;
 
 					if (
 						varsRef.current.contentContainer.mouse.leave &&
-						varsRef.current.tooltip.mouse.enter
+						!varsRef.current.tooltip.mouse.enter
 					) {
 						varsRef.current.contentContainer.mouse.enter = false;
 						varsRef.current.contentContainer.mouse.leave = false;

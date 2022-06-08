@@ -46,7 +46,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
 				>
 					<button
 						onClick={() => setThemeSettings(dispatch, true)}
-						className='p-3 text-3xl hover:drop-shadow-xl hover:bg-light-gray text-white bg-blue-900'
+						className='p-3 text-3xl hover:drop-shadow-xl hover:bg-gray-500 text-white bg-blue-900'
 						style={{
 							borderRadius: '50%',
 						}}

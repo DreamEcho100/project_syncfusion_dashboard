@@ -15,7 +15,7 @@ module.exports = {
 		},
 		extend: {
 			fontSize: {
-				14: '14px',
+				14: '0.875rem',
 			},
 			backgroundColor: {
 				'main-bg': '#FAFBFB',
@@ -25,25 +25,25 @@ module.exports = {
 				'half-transparent': 'rgba(0, 0, 0, 0.5)',
 			},
 			borderWidth: {
-				1: '1px',
+				1: '0.0625rem',
 			},
 			borderColor: {
 				color: 'rgba(0, 0, 0, 0.1)',
 			},
 			width: {
-				400: '400px',
-				760: '760px',
-				780: '780px',
-				800: '800px',
-				1000: '1000px',
-				1200: '1200px',
-				1400: '1400px',
+				400: '25rem',
+				760: '47.5rem',
+				780: '48.75rem',
+				800: '50rem',
+				1000: '62.5rem',
+				1200: '75rem',
+				1400: '87.5rem',
 			},
 			height: {
-				80: '80px',
+				80: '5rem',
 			},
 			minHeight: {
-				590: '590px',
+				590: '36.875rem',
 			},
 			backgroundImage: {
 				'hero-pattern':
